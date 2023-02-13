@@ -1,32 +1,43 @@
 import React, {useState} from 'react';
 import PostItem from "./components/PostItem";
 import s from "./App.module.css"
+import MyButton from "./components/UI/Button/MyButton";
+import MyInput from "./components/UI/Input/MyInput";
 
 function App() {
 
-  const [postName,setPostName]=useState("")
-  const [postDescription,setPostDescription]=useState("")
-  const [posts,setPosts] =useState([
-      {id:1,postName:"JavaScript",postDescription:"lorem ipsum"},
-  ])
+
+const [posts,setPosts]=useState([{id:1,postName:"JavaScript",postDescription:"1122323"}])
+const [post,setPost]=useState({postName:"",postDescription:""})
+
     function addNewPost(event){
       event.preventDefault();
-      const newPost ={id:Date.now(),postName,postDescription};
-      setPosts([...posts,newPost])
+      setPosts([...posts,{...post,id:Date.now()}])
+      setPost({postName:"",postDescription:""})
     }
 
   return (<div>
             <div className={s.container}>
               <div className={s.inputContainer}>
-                <input className={s.inputs} type="text" onChange={(event)=>setPostName(event.target.value)} placeholder="Название поста"/>
-                <input className={s.inputs} type="text" onChange={(event)=>setPostDescription(event.target.value)} placeholder="Описание поста"/>
+                <MyInput
+                       type="text"
+                       onChange={(event)=>setPost({...post, postName:event.target.value})}
+                       placeholder="Название поста"
+                       value={post.postName}
+                />
+                <MyInput
+                       type="text"
+                       onChange={(event)=>setPost({...post,postDescription:event.target.value})}
+                       placeholder="Описание поста"
+                       value={post.postDescription}
+                />
               </div>
-              <button className={s.inputBtn}  onClick={addNewPost}>Создать пост</button>
+              <MyButton onClick={addNewPost}>Создать пост</MyButton>
             </div>
             <br/>
           <h1>Посты</h1>
             <div className={s.postList}>
-                {posts.map((item)=><PostItem {...item}/>)}
+                {posts.map((item,index)=><PostItem {...item} number={index+1}/>)}
             </div>
 
 

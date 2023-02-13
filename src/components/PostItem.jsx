@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "../App.module.css";
+import MyButton from "./UI/Button/MyButton";
 
 const PostItem = (post) => {
 
@@ -8,13 +9,13 @@ const PostItem = (post) => {
             <div className={s.postItem}>
                 <div>
                     <div>
-                        <strong>{post.postName}</strong>
+                        <strong>{post.number}.{post.postName}</strong>
                     </div>
                     <div>
                         {post.postDescription}
                     </div>
                 </div>
-                <button>Удалить</button>
+                <MyButton>Удалить</MyButton>
             </div>
         </div>
     );
