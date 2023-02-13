@@ -1,0 +1,64 @@
+.container{
+    width: 800px;
+    background-color: cornflowerblue;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.inputContainer{
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+}
+.inputs{
+    width: 300px;
+    height: 2rem;
+
+}
+.inputBtn{
+    display: block;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: burlywood;
+    cursor: pointer;
+}
+.postContainer{
+    width: 800px;
+    background-color: cornflowerblue;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+h1{
+    text-align:center;
+}
+.postList{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+
+}
+.postItem{
+    display: flex;
+    width: 800px;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 20px;
+    border: 2px solid black;
+}
+.postItem button{
+    display: block;
+    height: 30px;
+}
