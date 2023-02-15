@@ -1,8 +1,12 @@
 .myButton {
     display: block;
-    width: 100px;
+    box-sizing: border-box;
+    min-width: 100px;
     height: 50px;
     border-radius: 10px;
-    background-color: burlywood;
+    background-color: #6969f5;
     cursor: pointer;
+}
+.myButton:hover{
+    background-color: #5858cc;
 }

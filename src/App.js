@@ -1,49 +1,50 @@
-import React, {useState} from 'react';
-import PostItem from "./components/PostItem";
-import s from "./App.module.css"
-import MyButton from "./components/UI/Button/MyButton";
-import MyInput from "./components/UI/Input/MyInput";
+import React, { useState } from "react";
+import PostList from "./components/PostList";
+import PostForm from "./components/UI/PostForm";
+import MySelect from "./components/UI/select/MySelect";
 
 function App() {
-
-
-const [posts,setPosts]=useState([{id:1,postName:"JavaScript",postDescription:"1122323"}])
-const [post,setPost]=useState({postName:"",postDescription:""})
-
-    function addNewPost(event){
-      event.preventDefault();
-      setPosts([...posts,{...post,id:Date.now()}])
-      setPost({postName:"",postDescription:""})
-    }
-
-  return (<div>
-            <div className={s.container}>
-              <div className={s.inputContainer}>
-                <MyInput
-                       type="text"
-                       onChange={(event)=>setPost({...post, postName:event.target.value})}
-                       placeholder="Название поста"
-                       value={post.postName}
-                />
-                <MyInput
-                       type="text"
-                       onChange={(event)=>setPost({...post,postDescription:event.target.value})}
-                       placeholder="Описание поста"
-                       value={post.postDescription}
-                />
-              </div>
-              <MyButton onClick={addNewPost}>Создать пост</MyButton>
-            </div>
-            <br/>
-          <h1>Посты</h1>
-            <div className={s.postList}>
-                {posts.map((item,index)=><PostItem {...item} number={index+1}/>)}
-            </div>
-
-
-      </div>
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      postName: "JavaScript",
+      postDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dignissimos dolor ex nisi numquam optio quisquam\n" +
+        "        repellendus? Aliquam, cum ducimus laudantium minus odit quibusdam tempora voluptas! Culpa et modi tempore.",
+    },
+  ]);
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
+  };
+  const removePost = (post) => {
+    setPosts(posts.filter((p) => p.id !== post.id));
+  };
+  const [selectedSort, setSelectedSort] = useState("");
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    console.log(sort);
+  };
+  return (
+    <div>
+      <br />
+      <PostForm create={createPost} />
+      <hr style={{ margin: "15px 0" }} />
+      <MySelect
+        value={selectedSort}
+        onChange={sortPosts}
+        defaultValue={"Сортировка по"}
+        options={[
+          { value: "postName", name: "По названию" },
+          { value: "postDescription", name: "По описанию" },
+        ]}
+      />
+      {posts.length !== 0 ? (
+        <PostList posts={posts} removePost={removePost} title="Посты про JS" />
+      ) : (
+        <h1>Постов не найдено</h1>
+      )}
+    </div>
   );
 }
 
 export default App;
-
