@@ -4,8 +4,11 @@ import MySelect from "./UI/select/MySelect";
 
 const PostFilter = ({ filter, setFilter }) => {
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <MyInput
+        style={{ marginBottom: "15px", width: 800 }}
         placeholder="Поиск..."
         value={filter.query}
         onChange={(e) => setFilter({ ...filter, query: e.target.value })}
