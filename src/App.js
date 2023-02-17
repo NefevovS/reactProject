@@ -2,6 +2,8 @@ import React, { useMemo, useState } from "react";
 import PostList from "./components/PostList";
 import PostForm from "./components/UI/PostForm";
 import PostFilter from "./components/PostFilter";
+import MyModal from "./components/UI/MyModal/MyModal";
+import MyButton from "./components/UI/Button/MyButton";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -21,8 +23,10 @@ function App() {
       postDescription: "яя",
     },
   ]);
+  const [modal, setModal] = useState(false);
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
+    setModal(false);
   };
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
@@ -44,15 +48,17 @@ function App() {
       return sortedPosts.filter((post) =>
         post.postName.toLowerCase().includes(filter.query.toLowerCase())
       );
-  }, [filter.query, sortedPosts]);
+  }, [filter.query, filter.sort, sortedPosts]);
 
   return (
     <div>
       <br />
-      <PostForm create={createPost} />
+      <MyButton onClick={() => setModal(true)}>Создать пост</MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={createPost} />
+      </MyModal>
       <hr style={{ margin: "15px 0" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
-
       {sortedAndSearchedPost.length !== 0 ? (
         <PostList
           posts={sortedAndSearchedPost}

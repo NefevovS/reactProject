@@ -1,6 +1,7 @@
 .container{
     width: 800px;
-    background-color: cornflowerblue;
+    border-radius: 16px;
+
     margin: 15px auto;
     display: flex;
     justify-content: space-between;
@@ -18,7 +19,7 @@
 
 .postContainer{
     width: 800px;
-    background-color: cornflowerblue;
+
     margin: 15px auto;
     display: flex;
     justify-content: space-between;
@@ -47,3 +48,5 @@ h1{
     font-size: 20px;
     border: 2px solid black;
 }
+
+
