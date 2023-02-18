@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import s from "../../App.module.css";
-import MyInput from "./Input/MyInput";
-import MyButton from "./Button/MyButton";
+import s from "../../../App.module.css";
+import MyInput from "../Input/MyInput";
+import MyButton from "../Button/MyButton";
 
 const PostForm = ({ create }) => {
   const [post, setPost] = useState({

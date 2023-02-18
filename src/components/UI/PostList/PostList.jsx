@@ -1,6 +1,6 @@
 import React from "react";
-import s from "../App.module.css";
-import PostItem from "./PostItem";
+import s from "../../../App.module.css";
+import PostItem from "../../PostItem";
 import "./PostList.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
