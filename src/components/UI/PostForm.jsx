@@ -5,13 +5,13 @@ import MyButton from "./Button/MyButton";
 
 const PostForm = ({ create }) => {
   const [post, setPost] = useState({
-    postName: "",
-    postDescription: "",
+    title: "",
+    body: "",
   });
   function addNewPost(event) {
     event.preventDefault();
     const newPost = { ...post, id: Date.now() };
-    setPost({ postName: "", postDescription: "" });
+    setPost({ title: "", body: "" });
     create(newPost);
   }
 
@@ -22,18 +22,16 @@ const PostForm = ({ create }) => {
           <MyInput
             type="text"
             onChange={(event) =>
-              setPost({ ...post, postName: event.target.value })
+              setPost({ ...post, title: event.target.value })
             }
             placeholder="Название поста"
-            value={post.postName}
+            value={post.title}
           />
           <MyInput
             type="text"
-            onChange={(event) =>
-              setPost({ ...post, postDescription: event.target.value })
-            }
+            onChange={(event) => setPost({ ...post, body: event.target.value })}
             placeholder="Описание поста"
-            value={post.postDescription}
+            value={post.body}
           />
         </div>
         <MyButton onClick={addNewPost}>Создать пост</MyButton>

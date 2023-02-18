@@ -9,10 +9,10 @@ const PostItem = (post) => {
         <div>
           <div>
             <strong>
-              {post.number}.{post.postName}
+              {post.number}.{post.title}
             </strong>
           </div>
-          <div>{post.postDescription}</div>
+          <div>{post.body}</div>
         </div>
         <MyButton onClick={() => post.removePost(post)}>Удалить</MyButton>
       </div>
