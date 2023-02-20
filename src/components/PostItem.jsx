@@ -9,7 +9,7 @@ const PostItem = (post) => {
         <div>
           <div>
             <strong>
-              {post.number}.{post.title}
+              {post.id}.{post.title}
             </strong>
           </div>
           <div>{post.body}</div>
