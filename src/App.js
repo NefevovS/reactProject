@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
-import Posts from "./pages/Posts";
-import { BrowserRouter, Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-import About from "./pages/About";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/UI/Navbar/Navbar";
+import AppRouter from "./components/UI/AppRouter/AppRouter";
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<Posts />} />
-        </Routes>
+        <Navbar />
+        <AppRouter />
       </BrowserRouter>
     </div>
   );
