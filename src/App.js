@@ -5,9 +5,11 @@ import PostFilter from "./components/PostFilter";
 import MyModal from "./components/UI/MyModal/MyModal";
 import MyButton from "./components/UI/Button/MyButton";
 import { usePosts } from "./components/hooks/usePosts";
-import PostServise from "./components/API/PostServis";
+import PostServis from "./components/API/PostServis";
 import Loader from "./components/UI/Loader/Loader";
 import { useFetching } from "./components/hooks/useFetching";
+import { getPageCount, getPagesArray } from "./Utils/pages";
+import "./App.css";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -26,9 +28,16 @@ function App() {
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const sortedAndSearchedPost = usePosts(posts, filter.sort, filter.query);
   const [fetchPosts, isPostLoading, postError] = useFetching(async () => {
-    const post = await PostServise.getAll();
-    setPosts(post);
+    const response = await PostServis.getAll(limit, page);
+    setPosts(response.data);
+    const totalCount = response.headers["x-total-count"];
+    setTotalPages(getPageCount(totalCount, limit));
   });
+  const [totalPages, setTotalPages] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  let pagesArray = getPagesArray(totalPages);
+
   return (
     <div>
       <br />
@@ -58,6 +67,13 @@ function App() {
       ) : (
         <h1>Постов не найдено</h1>
       )}
+      <div className="page__wrapper">
+        {pagesArray.map((p) => (
+          <span className={page === p ? "page page__current" : "page"}>
+            {p}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

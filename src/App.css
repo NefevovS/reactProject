@@ -1,7 +1,6 @@
 .container{
     width: 800px;
     border-radius: 16px;
-
     margin: 15px auto;
     display: flex;
     justify-content: space-between;
@@ -49,4 +48,21 @@ h1{
     border: 2px solid black;
 }
 
+.page__wrapper
+{
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 
+}
+.page {
+    padding: 10px;
+    border: 1px black solid;
+    cursor: pointer;
+}
+.page__current{
+    border: 2px solid orange;
+    font-weight: bold;
+
+}

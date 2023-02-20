@@ -4,9 +4,9 @@
     min-width: 100px;
     height: 50px;
     border-radius: 10px;
-    background-color: #6969f5;
+    background-color: #ffffff;
     cursor: pointer;
 }
 .myButton:hover{
-    background-color: #5858cc;
+    background-color: #a9a9a9;
 }

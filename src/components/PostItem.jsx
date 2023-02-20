@@ -1,11 +1,11 @@
 import React from "react";
-import s from "../App.module.css";
+import "../App.css";
 import MyButton from "./UI/Button/MyButton";
 
 const PostItem = (post) => {
   return (
     <div>
-      <div className={s.postItem}>
+      <div className="postItem">
         <div>
           <div>
             <strong>
