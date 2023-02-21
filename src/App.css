@@ -79,7 +79,7 @@ h1{
 }
 .navbar{
     height: 50px;
-    width: 100vw;
+    width: 90vw;
     display: flex;
     align-items: center;
     background-color: lightgrey;
