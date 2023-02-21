@@ -9,14 +9,9 @@ import routes from "../../../routes/routes";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Posts />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/posts" element={<Posts />} />
-      <Route path="/posts/:id" element={<PostIdPage />} />
-      <Route path="*" element={<Error />} />
-      {/*{routes.map(({ path, component, exact }, key) => {*/}
-      {/*  <Route path={path} element={component} key={key} />;*/}
-      {/*})}*/}
+      {routes.map((component) => (
+        <Route path={component.path} element={component.element} />
+      ))}
     </Routes>
   );
 };
